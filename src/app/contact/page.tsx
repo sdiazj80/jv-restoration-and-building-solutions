@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
+import { MapSection } from "@/components/MapSection";
 import { Reviews } from "@/components/Reviews";
 
 export const metadata: Metadata = {
@@ -112,41 +113,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Google Map */}
-      <section className="relative bg-black border-t border-neutral-900">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 pt-24">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
-                Find Us
-              </p>
-              <h2 className="font-display text-5xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter">
-                San Antonio <span className="text-gold-500 italic">based.</span>
-              </h2>
-              <p className="mt-6 text-lg text-neutral-400 max-w-xl leading-relaxed">
-                Local team. Local knowledge. We serve San Antonio and the
-                surrounding areas with pride.
-              </p>
-            </div>
-          </div>
-        </div>
+      <MapSection />
 
-        <div className="relative w-full aspect-[21/9] md:aspect-[21/7] overflow-hidden border-t border-b border-neutral-900 bg-neutral-950">
-          {/* Dark overlay filter to integrate map with design */}
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55385.55498871889!2d-98.57247807031249!3d29.470967500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c5f7fd0c75e1d%3A0x5678c13a3c4bb84c!2sSan%20Antonio%2C%20TX%2078213!5e0!3m2!1sen!2sus!4v1702000000000!5m2!1sen!2sus"
-            width="100%"
-            height="100%"
-            style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) contrast(0.85) saturate(0.6)" }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="JV Restoration service area — San Antonio, TX"
-            className="absolute inset-0"
-          />
-        </div>
-
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-12">
+      {/* Trust strip */}
+      <section className="bg-black py-12 border-t border-neutral-900">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <div className="grid md:grid-cols-4 gap-8">
             {[
               "Free Inspections",

@@ -40,6 +40,7 @@ export function Header() {
                 src="/jv-logo.png"
                 alt="JV Restoration & Building Solutions"
                 fill
+                sizes="64px"
                 className="object-contain"
                 priority
               />

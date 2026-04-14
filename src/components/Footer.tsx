@@ -47,6 +47,7 @@ export function Footer() {
                   src="/jv-logo.png"
                   alt="JV Restoration logo"
                   fill
+                  sizes="64px"
                   className="object-contain"
                 />
               </div>

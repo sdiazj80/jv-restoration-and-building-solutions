@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
+import { MapSection } from "@/components/MapSection";
 import { Reviews } from "@/components/Reviews";
 
 /* ════════════════════════════════════════════════════════════ */
@@ -542,6 +543,7 @@ export default function Home() {
       <Process />
       <GalleryPreview />
       <Reviews />
+      <MapSection />
       <CTASection
         headline="Your roof is one storm away."
         description="Don't wait. Get a free inspection today — we'll tell you exactly where you stand."
