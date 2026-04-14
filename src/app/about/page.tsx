@@ -1,158 +1,124 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
-import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "About Us | JV Restoration & Building Solutions",
+  title: "About | JV Restoration & Building Solutions",
   description:
-    "Learn about JV Restoration & Building Solutions — San Antonio's trusted roofing professionals committed to quality, honesty, and protecting your home.",
+    "San Antonio's modern roofing brand. Built on honest work, quality materials, and results you can see.",
 };
 
 export default function AboutPage() {
   return (
     <>
-      {/* Page Header */}
-      <section className="bg-slate-900 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-widest text-amber-400 mb-3">
-            About Us
+      {/* Hero */}
+      <section className="relative min-h-[70vh] flex items-end overflow-hidden bg-black pt-32">
+        <Image
+          src="/images/licensed-support/roofing-worker-01.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-60"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
+        <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-20 w-full">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+            About JV Restoration
           </p>
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Built on Hard Work, Driven by Results
+          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.85] tracking-tighter max-w-5xl">
+            Built on <span className="text-gold-500 italic">hard work.</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-300 leading-relaxed">
-            JV Restoration & Building Solutions is a San Antonio roofing company
-            that believes every homeowner deserves honest service, quality
-            craftsmanship, and a roof they can count on.
-          </p>
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <SectionHeading
-                label="Our Story"
-                title="Roofing San Antonio Homes the Right Way"
-                centered={false}
-              />
-              <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
-                <p>
-                  JV Restoration & Building Solutions was founded on a simple
-                  idea: homeowners deserve a roofing contractor they can trust.
-                  Too many companies cut corners, push unnecessary work, or
-                  disappear after cashing the check. We built this company to be
-                  different.
-                </p>
-                <p>
-                  Based in San Antonio, we serve homeowners and businesses across
-                  the city and surrounding areas. Our team understands the unique
-                  challenges that Texas weather brings — from intense summer
-                  heat to sudden hailstorms — and we build roofs that stand up
-                  to it all.
-                </p>
-                <p>
-                  Every project starts with an honest assessment. We tell you
-                  exactly what we see, what needs attention, and what your
-                  options are. No pressure, no upselling — just straightforward
-                  guidance from people who know roofing.
-                </p>
-              </div>
+      {/* Story */}
+      <section className="relative bg-black py-24 md:py-32">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+            <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+                Our Story
+              </p>
+              <h2 className="font-display text-5xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter">
+                A San Antonio roofer that gives a <span className="text-gold-500 italic">damn.</span>
+              </h2>
             </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/licensed-support/roofing-worker-01.jpg"
-                alt="JV Restoration roofer at work on a residential roof"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+            <div className="lg:col-span-7 space-y-8 text-lg text-neutral-300 leading-relaxed">
+              <p>
+                JV Restoration & Building Solutions was founded on a simple
+                idea: homeowners deserve a roofer they can actually trust. Too
+                many companies cut corners, push unnecessary work, or vanish
+                after cashing the check. We built this company to be different.
+              </p>
+              <p>
+                Based in San Antonio, we serve homeowners and businesses across
+                the city and surrounding areas. Our team knows Texas weather —
+                from relentless summer heat to sudden hailstorms — and we build
+                roofs that can take it.
+              </p>
+              <p>
+                Every project starts with an honest assessment. We tell you
+                exactly what we see, what needs attention, and what the options
+                are. No pressure. No upselling. Just <span className="text-gold-500 font-semibold">straight talk from people who know roofing.</span>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-slate-50 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            label="What Sets Us Apart"
-            title="Our Commitment to You"
-          />
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Values — alternating rows */}
+      <section className="relative bg-ink-950 py-24 md:py-32 border-y border-neutral-900">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <div className="mb-20 max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+              What We Stand For
+            </p>
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter">
+              Six principles. <span className="text-gold-500 italic">Zero compromise.</span>
+            </h2>
+          </div>
+
+          <div className="divide-y divide-neutral-900 border-y border-neutral-900">
             {[
-              {
-                title: "Honest Assessments",
-                description:
-                  "We never recommend work that isn't needed. Our inspections are thorough, and our recommendations are based on facts — not sales targets.",
-                icon: (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Quality Craftsmanship",
-                description:
-                  "We use quality materials and take the time to do every job right. We don't cut corners, because your roof protects everything underneath it.",
-                icon: (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.49 5.49a2.121 2.121 0 01-3-3l5.49-5.49m2.02 2.02c.603-.603.871-1.44.743-2.26a4.5 4.5 0 016.205-4.66l-2.83 2.83a1.5 1.5 0 002.122 2.122l2.828-2.829a4.5 4.5 0 01-4.66 6.206c-.82-.128-1.657.14-2.26.743L7.57 20.32" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Reliability You Can Count On",
-                description:
-                  "When we say we'll be there, we're there. When we give you a timeline, we stick to it. We understand that your time and trust matter.",
-                icon: (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Local San Antonio Team",
-                description:
-                  "We live and work in San Antonio. This is our community, and we treat every home like it belongs to a neighbor — because it does.",
-                icon: (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Clean Job Sites",
-                description:
-                  "We respect your property. Our crew keeps the work area clean, removes all debris, and leaves your home looking better than we found it.",
-                icon: (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Storm Damage Experts",
-                description:
-                  "Texas weather is unpredictable. We specialize in identifying and repairing hail, wind, and storm damage — and we help guide you through the insurance process.",
-                icon: (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3" />
-                  </svg>
-                ),
-              },
+              { n: "01", t: "Honest Assessments", d: "We never recommend work that isn't needed. Our inspections are thorough, our recommendations based on facts — not sales targets." },
+              { n: "02", t: "Quality Craftsmanship", d: "We use quality materials and take the time to do every job right. We don't cut corners — your roof protects everything underneath." },
+              { n: "03", t: "Reliability You Can Count On", d: "When we say we'll be there, we're there. When we give a timeline, we hit it. Your time and trust matter." },
+              { n: "04", t: "Local San Antonio Team", d: "We live and work here. This is our community, and we treat every home like it belongs to a neighbor — because it does." },
+              { n: "05", t: "Clean Job Sites", d: "We respect your property. Our crew keeps the work area clean, removes all debris, and leaves your home better than we found it." },
+              { n: "06", t: "Storm Damage Experts", d: "Texas weather is unpredictable. We specialize in identifying and repairing hail, wind, and storm damage — and guiding you through insurance." },
             ].map((v) => (
-              <div key={v.title} className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-500/10 text-amber-600">
-                  {v.icon}
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {v.description}
+              <div key={v.n} className="group grid md:grid-cols-12 gap-6 py-10 md:py-12 items-baseline">
+                <p className="md:col-span-2 font-display text-5xl md:text-6xl font-black text-neutral-900 tracking-tighter group-hover:text-gold-500 transition-colors">
+                  {v.n}
+                </p>
+                <h3 className="md:col-span-4 font-display text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
+                  {v.t}
+                </h3>
+                <p className="md:col-span-6 text-neutral-400 leading-relaxed text-lg">
+                  {v.d}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust strip */}
+      <section className="bg-black py-16">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              "Free Inspections",
+              "Free Estimates",
+              "Residential & Commercial",
+              "Insurance Support",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-3">
+                <div className="h-2 w-2 bg-gold-500 rounded-full" />
+                <p className="text-sm font-bold text-white uppercase tracking-widest">
+                  {item}
                 </p>
               </div>
             ))}
@@ -161,8 +127,8 @@ export default function AboutPage() {
       </section>
 
       <CTASection
-        headline="Let's Talk About Your Roof"
-        description="Whether you need a quick inspection or a full replacement, we're ready to help. Call us today or request a free estimate online."
+        headline="Let's talk about your roof."
+        description="Schedule a free inspection. Get honest answers. Move forward on your terms."
       />
     </>
   );

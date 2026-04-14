@@ -1,38 +1,79 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-400">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4">
+    <footer className="relative bg-black border-t border-neutral-900 overflow-hidden">
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/60 to-transparent" />
+
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-20">
+        {/* Giant CTA Headline */}
+        <div className="mb-16 pb-16 border-b border-neutral-900">
+          <div className="grid md:grid-cols-2 gap-10 items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-500 mb-4">
+                Let&apos;s Work
+              </p>
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter">
+                Ready for a roof that{" "}
+                <span className="text-gold-500 italic">actually lasts?</span>
+              </h2>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 md:justify-end">
+              <a
+                href="tel:+12105510119"
+                className="inline-flex items-center justify-center gap-2 border-2 border-neutral-700 px-8 py-4 text-xs font-bold text-white uppercase tracking-[0.2em] transition-all hover:border-gold-500 hover:text-gold-500"
+              >
+                Call Now
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-gold-500 px-8 py-4 text-xs font-bold text-black uppercase tracking-[0.2em] transition-all hover:bg-gold-400 hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]"
+              >
+                Get Estimate →
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer grid */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500 font-bold text-slate-900 text-lg">
-                JV
+          <div className="md:col-span-4">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="relative h-16 w-16 shrink-0">
+                <Image
+                  src="/jv-logo.png"
+                  alt="JV Restoration logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div>
-                <p className="text-sm font-bold text-white tracking-wide">
-                  JV Restoration
+                <p className="font-display text-lg font-bold text-white tracking-tight leading-none">
+                  JV RESTORATION
                 </p>
-                <p className="text-xs text-slate-500">& Building Solutions</p>
+                <p className="text-[10px] font-medium text-gold-500 tracking-[0.2em] uppercase mt-1">
+                  Building Solutions
+                </p>
               </div>
             </div>
-            <p className="text-sm leading-relaxed">
-              San Antonio&apos;s trusted roofing professionals. Quality
-              craftsmanship, honest service, and results you can see.
+            <p className="text-sm leading-relaxed text-neutral-400 max-w-xs">
+              San Antonio&apos;s modern roofing brand. Built on quality work,
+              real materials, and zero bullshit.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
-              Quick Links
+          {/* Nav */}
+          <div className="md:col-span-2">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
+              Explore
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {[
                 { href: "/", label: "Home" },
-                { href: "/about", label: "About Us" },
+                { href: "/about", label: "About" },
                 { href: "/services", label: "Services" },
                 { href: "/gallery", label: "Gallery" },
                 { href: "/contact", label: "Contact" },
@@ -40,7 +81,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors hover:text-amber-400"
+                    className="text-sm text-neutral-400 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -50,22 +91,22 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+          <div className="md:col-span-3">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
               Services
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {[
                 "Roof Repair",
                 "Roof Replacement",
                 "Roof Inspections",
-                "Storm Damage Roofing",
+                "Storm Damage",
                 "Insurance Assistance",
               ].map((service) => (
                 <li key={service}>
                   <Link
                     href="/services"
-                    className="text-sm transition-colors hover:text-amber-400"
+                    className="text-sm text-neutral-400 transition-colors hover:text-white"
                   >
                     {service}
                   </Link>
@@ -75,73 +116,49 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
-              Contact Us
+          <div className="md:col-span-3">
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
+              Contact
             </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="tel:+12105510119"
-                  className="flex items-center gap-2 text-sm transition-colors hover:text-amber-400"
+                  className="block text-sm text-neutral-400 transition-colors hover:text-white"
                 >
-                  <PhoneIcon />
+                  <span className="block text-[10px] uppercase tracking-widest text-neutral-600 mb-0.5">Phone</span>
                   (210) 551-0119
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:jvcontracting210@gmail.com"
-                  className="flex items-center gap-2 text-sm transition-colors hover:text-amber-400"
+                  className="block text-sm text-neutral-400 transition-colors hover:text-white break-all"
                 >
-                  <EmailIcon />
+                  <span className="block text-[10px] uppercase tracking-widest text-neutral-600 mb-0.5">Email</span>
                   jvcontracting210@gmail.com
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm">
-                <LocationIcon />
-                San Antonio, TX 78213
+              <li>
+                <div className="block text-sm text-neutral-400">
+                  <span className="block text-[10px] uppercase tracking-widest text-neutral-600 mb-0.5">Location</span>
+                  San Antonio, TX 78213
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
-          <p>
-            &copy; {new Date().getFullYear()} JV Restoration & Building
-            Solutions. All rights reserved.
+        {/* Bottom */}
+        <div className="mt-16 pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="text-xs text-neutral-600">
+            © {new Date().getFullYear()} JV Restoration & Building Solutions LLC. All rights reserved.
           </p>
-          <p className="mt-1">
-            Serving San Antonio and surrounding areas with professional roofing
-            services.
+          <p className="text-xs text-neutral-600 uppercase tracking-widest">
+            San Antonio · Texas
           </p>
         </div>
       </div>
     </footer>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-    </svg>
-  );
-}
-
-function EmailIcon() {
-  return (
-    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-    </svg>
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-    </svg>
   );
 }

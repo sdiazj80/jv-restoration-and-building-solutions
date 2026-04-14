@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -13,57 +14,78 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-900 shadow-lg">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between md:h-20">
-          {/* Logo / Brand */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500 font-bold text-slate-900 text-lg">
-              JV
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-black/90 backdrop-blur-md border-b border-neutral-900"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="flex h-20 items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center shrink-0 group">
+            <div className="relative h-14 w-14 sm:h-16 sm:w-16 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/jv-logo.png"
+                alt="JV Restoration & Building Solutions"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <div className="hidden sm:block">
-              <p className="text-sm font-bold leading-tight text-white tracking-wide">
-                JV Restoration
+            <div className="hidden sm:block ml-3 leading-tight">
+              <p className="text-sm font-display font-bold text-white tracking-tight">
+                JV RESTORATION
               </p>
-              <p className="text-xs text-slate-400 leading-tight">
-                & Building Solutions
+              <p className="text-[10px] font-medium text-gold-500 tracking-[0.2em] uppercase">
+                Building Solutions
               </p>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:text-amber-400"
+                className="px-5 py-2 text-sm font-medium text-neutral-300 transition-colors hover:text-gold-500 uppercase tracking-wider"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* CTA + Mobile toggle */}
+          {/* CTA */}
           <div className="flex items-center gap-3">
             <a
               href="tel:+12105510119"
-              className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-bold text-slate-900 transition-colors hover:bg-amber-400"
+              className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-gold-500 transition-colors"
             >
               <PhoneIcon />
-              (210) 551-0119
+              <span className="hidden lg:inline">(210) 551-0119</span>
             </a>
             <Link
               href="/contact"
-              className="hidden md:inline-flex rounded-lg border border-amber-500 px-4 py-2 text-sm font-semibold text-amber-400 transition-colors hover:bg-amber-500 hover:text-slate-900"
+              className="hidden sm:inline-flex items-center gap-2 rounded-none bg-gold-500 px-5 py-3 text-xs font-bold text-black uppercase tracking-widest transition-all hover:bg-gold-400 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]"
             >
               Free Estimate
+              <ArrowIcon />
             </Link>
             <button
               type="button"
-              className="inline-flex md:hidden items-center justify-center rounded-lg p-2 text-slate-300 hover:text-white"
+              className="inline-flex lg:hidden items-center justify-center p-2 text-white"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -75,13 +97,13 @@ export function Header() {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-slate-800 bg-slate-900">
-          <nav className="flex flex-col px-4 py-3 space-y-1">
+        <div className="lg:hidden border-t border-neutral-900 bg-black">
+          <nav className="flex flex-col px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-lg px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-amber-400"
+                className="px-4 py-3 text-base font-medium text-neutral-200 uppercase tracking-wider transition-colors hover:text-gold-500 hover:bg-neutral-950"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -89,7 +111,7 @@ export function Header() {
             ))}
             <a
               href="tel:+12105510119"
-              className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-5 py-3 text-sm font-bold text-slate-900"
+              className="mt-3 flex items-center justify-center gap-2 bg-gold-500 px-5 py-4 text-sm font-bold text-black uppercase tracking-widest"
             >
               <PhoneIcon />
               Call (210) 551-0119
@@ -108,15 +130,20 @@ function PhoneIcon() {
     </svg>
   );
 }
-
-function MenuIcon() {
+function ArrowIcon() {
   return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
     </svg>
   );
 }
-
+function MenuIcon() {
+  return (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+    </svg>
+  );
+}
 function CloseIcon() {
   return (
     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

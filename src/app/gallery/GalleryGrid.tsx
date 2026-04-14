@@ -25,17 +25,17 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
 
   return (
     <>
-      {/* Category Filter */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      {/* Filter */}
+      <div className="flex flex-wrap gap-3 mb-12">
         {categories.map((cat) => (
           <button
             key={cat}
             type="button"
             onClick={() => setSelectedCategory(cat)}
-            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+            className={`px-5 py-3 text-xs font-bold uppercase tracking-[0.2em] transition-all ${
               selectedCategory === cat
-                ? "bg-amber-500 text-slate-900"
-                : "bg-white border border-slate-200 text-slate-600 hover:border-amber-500 hover:text-amber-600"
+                ? "bg-gold-500 text-black"
+                : "border border-neutral-800 text-neutral-400 hover:border-gold-500 hover:text-gold-500"
             }`}
           >
             {cat}
@@ -44,27 +44,29 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {filtered.map((img, i) => (
           <button
             key={`${img.src}-${i}`}
             type="button"
             onClick={() => setLightboxIndex(i)}
-            className="group relative aspect-square overflow-hidden rounded-xl bg-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            className="group relative aspect-square overflow-hidden bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-gold-500"
           >
             <Image
               src={img.src}
               alt={img.alt}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 translate-y-full group-hover:translate-y-0 transition-transform">
-              <span className="text-xs font-semibold text-amber-400">
+            <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/40" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform bg-gradient-to-t from-black via-black/80 to-transparent">
+              <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-gold-500 mb-1">
                 {img.category}
-              </span>
-              <p className="text-xs text-white mt-0.5">{img.alt}</p>
+              </p>
+              <p className="text-sm font-bold text-white leading-tight">
+                {img.alt}
+              </p>
             </div>
           </button>
         ))}
@@ -73,7 +75,7 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
       {/* Lightbox */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
           onClick={() => setLightboxIndex(null)}
           role="dialog"
           aria-label="Image lightbox"
@@ -81,7 +83,7 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
           <button
             type="button"
             onClick={() => setLightboxIndex(null)}
-            className="absolute top-4 right-4 text-white hover:text-amber-400 z-10"
+            className="absolute top-6 right-6 text-white hover:text-gold-500 z-10"
             aria-label="Close lightbox"
           >
             <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -90,7 +92,7 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
           </button>
 
           <div
-            className="relative max-w-5xl w-full aspect-[4/3] rounded-xl overflow-hidden"
+            className="relative max-w-6xl w-full aspect-[4/3]"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
@@ -98,22 +100,20 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
               alt={filtered[lightboxIndex]?.alt}
               fill
               className="object-contain"
-              sizes="90vw"
+              sizes="95vw"
               priority
             />
           </div>
 
-          {/* Caption */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-            <span className="inline-block rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold text-slate-900">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-2">
               {filtered[lightboxIndex]?.category}
-            </span>
-            <p className="mt-2 text-sm text-white font-medium">
+            </p>
+            <p className="font-display text-lg font-bold text-white">
               {filtered[lightboxIndex]?.alt}
             </p>
           </div>
 
-          {/* Nav buttons */}
           {lightboxIndex > 0 && (
             <button
               type="button"
@@ -121,10 +121,10 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
                 e.stopPropagation();
                 setLightboxIndex(lightboxIndex - 1);
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 backdrop-blur-sm"
+              className="absolute left-6 top-1/2 -translate-y-1/2 border border-neutral-800 p-4 text-white hover:border-gold-500 hover:text-gold-500 transition-all"
               aria-label="Previous image"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
@@ -136,10 +136,10 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
                 e.stopPropagation();
                 setLightboxIndex(lightboxIndex + 1);
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 backdrop-blur-sm"
+              className="absolute right-6 top-1/2 -translate-y-1/2 border border-neutral-800 p-4 text-white hover:border-gold-500 hover:text-gold-500 transition-all"
               aria-label="Next image"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>

@@ -1,221 +1,304 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
-import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
+import { Reviews } from "@/components/Reviews";
 
-/* ───────────────────────── HERO ───────────────────────── */
+/* ════════════════════════════════════════════════════════════ */
+/* HERO — Full bleed cinematic                                  */
+/* ════════════════════════════════════════════════════════════ */
 function Hero() {
   return (
-    <section className="relative min-h-[600px] lg:min-h-[700px] overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src="/images/licensed-support/craftsman-home-01.jpg"
-        alt="Beautiful residential home with professionally installed roof in San Antonio"
-        fill
-        className="object-cover"
-        priority
-        sizes="100vw"
-      />
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/50" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-slate-900/30" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/licensed-support/craftsman-home-01.jpg"
+          alt="Premium residential roofing in San Antonio"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover animate-slow-zoom"
+        />
+      </div>
+      {/* Layered overlays for cinematic depth */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
-        <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-full bg-amber-500/20 border border-amber-500/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-400 mb-6 backdrop-blur-sm">
-            San Antonio&apos;s Trusted Roofers
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
-            Protect Your Home With a Roof{" "}
-            <span className="text-amber-400">Built to Last</span>
+      {/* Decorative gold line */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 h-[40vh] w-px bg-gradient-to-b from-transparent via-gold-500/60 to-transparent hidden lg:block" />
+
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-32 lg:py-40 w-full">
+        <div className="max-w-4xl animate-fade-up">
+          <div className="flex items-center gap-3 mb-8">
+            <span className="h-px w-12 bg-gold-500" />
+            <p className="text-xs font-bold uppercase tracking-[0.4em] text-gold-500">
+              San Antonio · Est. 2024
+            </p>
+          </div>
+
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] font-black text-white leading-[0.85] tracking-[-0.04em]">
+            Roofs built
+            <br />
+            <span className="text-gold-500">to outlast</span>
+            <br />
+            the <em className="text-forest-500 not-italic">storm.</em>
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-slate-200 max-w-2xl">
-            From storm damage repairs to complete roof replacements, JV
-            Restoration delivers honest assessments, quality craftsmanship, and
-            results you can see. Serving San Antonio homeowners and businesses
-            with pride.
+
+          <p className="mt-10 text-lg md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
+            JV Restoration is San Antonio&apos;s no-nonsense roofing team. Storm
+            damage, replacements, inspections — done right the first time.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+
+          <div className="mt-12 flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-8 py-4 text-sm font-bold text-slate-900 transition-colors hover:bg-amber-400 shadow-lg shadow-amber-500/25"
+              className="group inline-flex items-center justify-center gap-3 bg-gold-500 px-10 py-5 text-sm font-bold text-black uppercase tracking-[0.2em] transition-all hover:bg-gold-400 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)]"
             >
-              <InspectionIcon />
-              Get Free Roof Inspection
+              Free Inspection
+              <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
             </Link>
             <a
               href="tel:+12105510119"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/20 hover:border-white/50"
+              className="inline-flex items-center justify-center gap-3 border-2 border-neutral-700 bg-black/40 backdrop-blur-sm px-10 py-5 text-sm font-bold text-white uppercase tracking-[0.2em] transition-all hover:border-gold-500 hover:text-gold-500"
             >
-              <PhoneIcon />
-              Call Now — (210) 551-0119
+              <PhoneIcon /> (210) 551-0119
             </a>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
 
-/* ──────────────────── TRUST STRIP ─────────────────────── */
-function TrustStrip() {
-  const items = [
-    { icon: <CheckCircle />, text: "Free Inspections" },
-    { icon: <CheckCircle />, text: "Free Estimates" },
-    { icon: <CheckCircle />, text: "Residential & Commercial" },
-    { icon: <CheckCircle />, text: "Storm Damage Specialists" },
-    { icon: <CheckCircle />, text: "San Antonio Based" },
-  ];
-  return (
-    <section className="bg-amber-500">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-          {items.map((item) => (
-            <div
-              key={item.text}
-              className="flex items-center gap-2 text-sm font-semibold text-slate-900"
-            >
-              {item.icon}
-              {item.text}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ──────────────── SERVICES PREVIEW ────────────────────── */
-const services = [
-  {
-    title: "Roof Repair",
-    description:
-      "Leaks, missing shingles, and weather damage fixed fast. We stop small problems before they become expensive emergencies.",
-    icon: <WrenchIcon />,
-    image: "/images/licensed-support/roof-shingles-detail-01.jpg",
-  },
-  {
-    title: "Roof Replacement",
-    description:
-      "When repairs aren't enough, we deliver full roof replacements with premium materials and clean, professional installation.",
-    icon: <HomeIcon />,
-    image: "/images/licensed-support/house-roof-angle-01.jpg",
-  },
-  {
-    title: "Roof Inspections",
-    description:
-      "Free, thorough inspections that catch issues early. Know exactly what's going on with your roof — no surprises.",
-    icon: <SearchIcon />,
-    image: "/images/licensed-support/roof-inspection-01.jpg",
-  },
-  {
-    title: "Storm Damage Roofing",
-    description:
-      "Hail, wind, and storm damage restored quickly. We help you navigate the process and get your roof back to full protection.",
-    icon: <StormIcon />,
-    image: "/images/licensed-support/storm-clouds-01.jpg",
-  },
-];
-
-function ServicesPreview() {
-  return (
-    <section className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="What We Do"
-          title="Professional Roofing Services"
-          description="Comprehensive roofing solutions for San Antonio homes and businesses — from quick repairs to complete replacements."
-        />
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="group rounded-xl border border-slate-200 overflow-hidden transition-all hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/5"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <Image
-                  src={s.image}
-                  alt={s.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              </div>
-              <div className="p-6">
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10 text-amber-600 transition-colors group-hover:bg-amber-500 group-hover:text-white">
-                  {s.icon}
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {s.description}
-                </p>
-                <Link
-                  href="/services"
-                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-amber-600 transition-colors hover:text-amber-500"
-                >
-                  Learn More
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────── PROOF / CREDIBILITY ──────────────────── */
-function ProofSection() {
-  return (
-    <section className="relative bg-slate-900 py-16 md:py-24 overflow-hidden">
-      <Image
-        src="/images/licensed-support/aerial-neighborhood-01.jpg"
-        alt="Aerial view of residential neighborhood"
-        fill
-        className="object-cover opacity-20"
-        sizes="100vw"
-      />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400 mb-2">
-              Why San Antonio Trusts Us
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
-              Roofing Done Right, Every Time
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-slate-300">
-              We&apos;re not a fly-by-night operation. JV Restoration is a local
-              San Antonio team that stands behind every job. Our work speaks for
-              itself — and so do the homeowners we&apos;ve helped protect.
-            </p>
-            <div className="mt-8 grid grid-cols-2 gap-6">
+        {/* Bottom stats bar */}
+        <div className="absolute left-0 right-0 bottom-0 border-t border-neutral-800/80 bg-black/60 backdrop-blur-md">
+          <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { value: "Free", label: "Inspections & Estimates" },
-                { value: "100%", label: "Satisfaction Focus" },
-                { value: "Local", label: "San Antonio Based" },
-                { value: "Fast", label: "Response Times" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-3xl font-bold text-amber-400">{stat.value}</p>
-                  <p className="mt-1 text-sm text-slate-400">{stat.label}</p>
+                { v: "FREE", l: "Inspections" },
+                { v: "100%", l: "Local Team" },
+                { v: "24HR", l: "Response" },
+                { v: "∞", l: "Quality Focus" },
+              ].map((s) => (
+                <div key={s.l} className="border-l border-gold-500/40 pl-4">
+                  <p className="font-display text-3xl md:text-4xl font-black text-white leading-none">
+                    {s.v}
+                  </p>
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mt-2">
+                    {s.l}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/images/licensed-support/roofing-worker-01.jpg"
-              alt="Professional roofer working on a roof"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* MARQUEE — Trust indicators                                   */
+/* ════════════════════════════════════════════════════════════ */
+function Marquee() {
+  const items = [
+    "ROOF REPAIR",
+    "ROOF REPLACEMENT",
+    "STORM DAMAGE",
+    "INSPECTIONS",
+    "HAIL DAMAGE",
+    "INSURANCE CLAIMS",
+    "RESIDENTIAL",
+    "COMMERCIAL",
+  ];
+  const doubled = [...items, ...items];
+  return (
+    <section className="relative border-y border-neutral-900 bg-black py-8 overflow-hidden">
+      <div className="flex animate-marquee whitespace-nowrap">
+        {doubled.map((item, i) => (
+          <div key={i} className="flex items-center mx-8 shrink-0">
+            <span className="font-display text-2xl md:text-4xl font-black text-neutral-900 tracking-tight uppercase [-webkit-text-stroke:1px_theme(colors.gold-500)]">
+              {item}
+            </span>
+            <span className="mx-8 text-gold-500 text-2xl">◆</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* SERVICES — Bold split layout                                 */
+/* ════════════════════════════════════════════════════════════ */
+function Services() {
+  const services = [
+    {
+      no: "01",
+      title: "Roof Repair",
+      tag: "Fix & Fortify",
+      description:
+        "Leaks, missing shingles, flashing damage — identified fast, fixed right. We stop small problems before they become expensive.",
+      image: "/images/licensed-support/roof-shingles-detail-01.jpg",
+    },
+    {
+      no: "02",
+      title: "Roof Replacement",
+      tag: "Full Rebuild",
+      description:
+        "Complete tear-off and new install with quality materials, proper ventilation, and craftsmanship that stands up to Texas weather.",
+      image: "/images/licensed-support/house-roof-angle-01.jpg",
+    },
+    {
+      no: "03",
+      title: "Roof Inspections",
+      tag: "Know The Truth",
+      description:
+        "Free thorough inspections with full photo documentation. Honest assessments — not sales pitches designed to upsell you.",
+      image: "/images/licensed-support/roof-inspection-01.jpg",
+    },
+    {
+      no: "04",
+      title: "Storm Damage",
+      tag: "Fast Recovery",
+      description:
+        "Hail, wind, debris — we respond fast, document thoroughly, and restore your roof to full protection. We guide you through insurance.",
+      image: "/images/licensed-support/storm-clouds-01.jpg",
+    },
+  ];
+
+  return (
+    <section className="relative bg-black py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 gap-12 mb-20">
+          <div className="lg:col-span-5">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+              What We Do
+            </p>
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter">
+              Work that <span className="text-gold-500 italic">holds up.</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+            <p className="text-lg text-neutral-400 leading-relaxed">
+              Four services. One standard. From minor repairs to full
+              replacements, every job is approached like it&apos;s our own home
+              at stake.
+            </p>
+          </div>
+        </div>
+
+        <div className="divide-y divide-neutral-900 border-y border-neutral-900">
+          {services.map((s) => (
+            <Link
+              key={s.no}
+              href="/services"
+              className="group relative grid md:grid-cols-12 gap-8 py-10 md:py-14 items-center transition-all hover:bg-neutral-950/50"
+            >
+              {/* Number */}
+              <div className="md:col-span-2">
+                <p className="font-display text-5xl md:text-6xl font-black text-neutral-800 transition-colors group-hover:text-gold-500">
+                  {s.no}
+                </p>
+              </div>
+              {/* Image */}
+              <div className="md:col-span-4">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={s.image}
+                    alt={s.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/20 transition-opacity group-hover:bg-black/0" />
+                </div>
+              </div>
+              {/* Content */}
+              <div className="md:col-span-5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-3">
+                  {s.tag}
+                </p>
+                <h3 className="font-display text-3xl md:text-5xl font-black text-white leading-none tracking-tight mb-4">
+                  {s.title}
+                </h3>
+                <p className="text-neutral-400 leading-relaxed">
+                  {s.description}
+                </p>
+              </div>
+              {/* Arrow */}
+              <div className="md:col-span-1 flex md:justify-end">
+                <div className="flex h-12 w-12 items-center justify-center border border-neutral-800 transition-all group-hover:border-gold-500 group-hover:bg-gold-500">
+                  <svg className="h-4 w-4 text-white transition-colors group-hover:text-black" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* PROOF / STATS — Image + data                                 */
+/* ════════════════════════════════════════════════════════════ */
+function Proof() {
+  return (
+    <section className="relative bg-black py-24 md:py-32 overflow-hidden">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="relative">
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src="/images/licensed-support/roofing-worker-01.jpg"
+                alt="JV Restoration roofer at work"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+            {/* Overlay badge */}
+            <div className="absolute -bottom-6 -right-6 md:-right-12 bg-gold-500 text-black px-8 py-6 shadow-2xl">
+              <p className="font-display text-4xl md:text-5xl font-black leading-none tracking-tighter">
+                Hands
+              </p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] mt-2">
+                On The Roof
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+              Why JV
+            </p>
+            <h2 className="font-display text-5xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter">
+              We don&apos;t just <span className="text-gold-500 italic">sell roofs.</span>
+            </h2>
+            <p className="mt-8 text-lg text-neutral-400 leading-relaxed">
+              We install them. We inspect them. We stand on top of them in the
+              Texas sun. And we stand behind every one we touch.
+            </p>
+
+            <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10">
+              {[
+                { v: "Local", l: "San Antonio owned & operated" },
+                { v: "Honest", l: "No upselling, no pressure" },
+                { v: "Fast", l: "Response within 24 hours" },
+                { v: "Quality", l: "Real materials, real work" },
+              ].map((item) => (
+                <div key={item.v}>
+                  <p className="font-display text-3xl md:text-4xl font-black text-gold-500 leading-none tracking-tight">
+                    {item.v}
+                  </p>
+                  <p className="mt-3 text-sm text-neutral-400 leading-relaxed">
+                    {item.l}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -223,105 +306,43 @@ function ProofSection() {
   );
 }
 
-/* ─────────────── PROBLEM SECTION ──────────────────────── */
-function ProblemSection() {
-  const problems = [
-    {
-      title: "Damage Isn't Always Visible",
-      description:
-        "Roof damage from storms and wear often hides beneath the surface. By the time you see a leak inside, the damage may already be extensive.",
-    },
-    {
-      title: "Small Issues Become Expensive",
-      description:
-        "A missing shingle or minor crack can lead to water damage, mold, and structural problems if ignored. Early action saves thousands.",
-    },
-    {
-      title: "Storm Damage Goes Unnoticed",
-      description:
-        "Hail and wind can compromise your roof's integrity without any obvious signs from the ground. A professional inspection reveals the truth.",
-    },
-    {
-      title: "Insurance Claims Are Confusing",
-      description:
-        "Navigating the insurance process after storm damage is overwhelming. We provide documentation and guidance to support your claim.",
-    },
-  ];
-
-  return (
-    <section className="bg-slate-50 py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="Why It Matters"
-          title="Don't Wait Until It's Too Late"
-          description="Most roof problems start small. Here's why acting now protects your home and your wallet."
-        />
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {problems.map((p, i) => (
-            <div
-              key={i}
-              className="flex gap-4 rounded-xl bg-white p-6 shadow-sm border border-slate-100"
-            >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-700/10 text-red-700">
-                <AlertIcon />
-              </div>
-              <div>
-                <h3 className="font-bold text-slate-900">{p.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
-                  {p.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────── PROCESS SECTION ──────────────────────── */
-function ProcessSection() {
+/* ════════════════════════════════════════════════════════════ */
+/* PROCESS — Vertical timeline                                  */
+/* ════════════════════════════════════════════════════════════ */
+function Process() {
   const steps = [
-    {
-      step: "01",
-      title: "Schedule Your Inspection",
-      description: "Call us or fill out our form. We'll set up a convenient time to inspect your roof at no cost.",
-    },
-    {
-      step: "02",
-      title: "Professional Roof Inspection",
-      description: "Our team performs a thorough inspection and documents everything — no detail overlooked.",
-    },
-    {
-      step: "03",
-      title: "Clear Options Provided",
-      description: "We present honest findings with straightforward options and transparent pricing. No pressure, no surprises.",
-    },
-    {
-      step: "04",
-      title: "Quality Work Completed",
-      description: "Our crew gets to work. Clean job site, quality materials, and craftsmanship you can count on.",
-    },
+    { n: "01", t: "Schedule Inspection", d: "Call or submit the form. We set up a convenient time at no cost." },
+    { n: "02", t: "On-Site Inspection", d: "Thorough roof check with full photo documentation — no detail missed." },
+    { n: "03", t: "Clear Options", d: "Honest findings, straightforward pricing. No pressure. No surprises." },
+    { n: "04", t: "Work Completed", d: "Clean job site. Quality materials. Craftsmanship you can count on." },
   ];
-
   return (
-    <section className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="How It Works"
-          title="Simple, Transparent Process"
-          description="From inspection to completion, we make every step clear and stress-free."
-        />
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((s) => (
-            <div key={s.step} className="relative text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-500 text-2xl font-bold text-slate-900">
-                {s.step}
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {s.description}
+    <section className="relative bg-gradient-to-b from-black via-forest-900/20 to-black py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="text-center mb-20">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+            The Process
+          </p>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter max-w-4xl mx-auto text-balance">
+            Four steps. <span className="text-gold-500 italic">Zero BS.</span>
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-4 gap-px bg-neutral-900 border border-neutral-900">
+          {steps.map((s, i) => (
+            <div key={s.n} className="group relative bg-black p-8 md:p-10 transition-colors hover:bg-neutral-950">
+              <p className="font-display text-6xl md:text-7xl font-black text-neutral-900 leading-none tracking-tighter transition-colors group-hover:text-gold-500">
+                {s.n}
               </p>
+              <h3 className="font-display text-xl md:text-2xl font-black text-white mt-6 leading-tight">
+                {s.t}
+              </h3>
+              <p className="mt-4 text-sm text-neutral-400 leading-relaxed">
+                {s.d}
+              </p>
+              {i < 3 && (
+                <div className="hidden md:block absolute right-0 top-10 h-0.5 w-8 bg-gold-500/40 translate-x-full" />
+              )}
             </div>
           ))}
         </div>
@@ -330,114 +351,174 @@ function ProcessSection() {
   );
 }
 
-/* ─────────── GALLERY PREVIEW ──────────────────────────── */
+/* ════════════════════════════════════════════════════════════ */
+/* GALLERY PREVIEW — Bold mosaic                                */
+/* ════════════════════════════════════════════════════════════ */
 function GalleryPreview() {
-  const images = [
-    { src: "/images/licensed-support/house-exterior-08.jpg", alt: "Completed Residential Roof – San Antonio" },
-    { src: "/images/licensed-support/house-exterior-01.jpg", alt: "New Roof Installation" },
-    { src: "/images/licensed-support/suburban-home-01.jpg", alt: "Suburban Home Roofing Project" },
-    { src: "/images/licensed-support/house-roof-angle-01.jpg", alt: "Residential Roof Replacement" },
-    { src: "/images/licensed-support/house-exterior-04.jpg", alt: "Roof Repair – San Antonio" },
-    { src: "/images/licensed-support/house-exterior-07.jpg", alt: "Residential Roofing" },
-  ];
-
   return (
-    <section className="bg-slate-50 py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="Our Work"
-          title="Real Projects, Real Results"
-          description="Browse our recent roofing projects across San Antonio."
-        />
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
-          {images.map((img, i) => (
-            <div
-              key={i}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform">
-                <p className="text-sm font-medium text-white">{img.alt}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8 text-center">
+    <section className="relative bg-black py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+              The Work
+            </p>
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter">
+              Proof over <span className="text-gold-500 italic">promises.</span>
+            </h2>
+          </div>
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-slate-800"
+            className="inline-flex items-center gap-3 text-sm font-bold text-white uppercase tracking-[0.2em] border-b border-gold-500 pb-2 self-start hover:text-gold-500 transition-colors"
           >
             View Full Gallery
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </Link>
         </div>
+
+        {/* Bold asymmetric grid */}
+        <div className="grid grid-cols-12 gap-3">
+          <GalleryTile src="/images/licensed-support/house-exterior-08.jpg" alt="Completed Residential Roof" tag="Replacement" className="col-span-12 md:col-span-7 aspect-[16/10]" />
+          <GalleryTile src="/images/licensed-support/house-roof-angle-01.jpg" alt="New Shingle Install" tag="Replacement" className="col-span-12 md:col-span-5 aspect-[16/10]" />
+          <GalleryTile src="/images/licensed-support/suburban-home-01.jpg" alt="Suburban Roof" tag="Residential" className="col-span-6 md:col-span-4 aspect-square" />
+          <GalleryTile src="/images/licensed-support/house-exterior-01.jpg" alt="Roof Repair" tag="Repair" className="col-span-6 md:col-span-4 aspect-square" />
+          <GalleryTile src="/images/licensed-support/craftsman-home-01.jpg" alt="Premium Install" tag="Replacement" className="col-span-12 md:col-span-4 aspect-square" />
+        </div>
       </div>
     </section>
   );
 }
 
-/* ──────────── CONTACT BLOCK ───────────────────────────── */
-function ContactBlock() {
+function GalleryTile({
+  src,
+  alt,
+  tag,
+  className,
+}: {
+  src: string;
+  alt: string;
+  tag: string;
+  className: string;
+}) {
   return (
-    <section className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <SectionHeading
-              label="Get In Touch"
-              title="Ready to Get Started?"
-              description="Whether you need an inspection, a repair, or a full replacement — we're here to help. Reach out today."
-              centered={false}
-            />
-            <div className="mt-8 space-y-5">
-              <a
-                href="tel:+12105510119"
-                className="flex items-center gap-4 rounded-xl bg-slate-50 p-4 transition-colors hover:bg-amber-500/5"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-500 text-white">
-                  <PhoneIcon />
+    <div className={`group relative overflow-hidden ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-110"
+        sizes="(max-width: 768px) 50vw, 33vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
+      <div className="absolute bottom-0 left-0 right-0 p-6 transition-transform duration-500 translate-y-2 group-hover:translate-y-0">
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-2">
+          {tag}
+        </p>
+        <p className="font-display text-lg font-bold text-white leading-tight">
+          {alt}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* PROBLEM — Alternating dark panels                            */
+/* ════════════════════════════════════════════════════════════ */
+function Problem() {
+  const problems = [
+    { t: "Damage hides in plain sight", d: "By the time you see a leak, the damage is already extensive. Most issues aren't visible from the ground." },
+    { t: "Small issues compound fast", d: "A loose shingle becomes water damage, mold, and structural repairs. Early action saves thousands." },
+    { t: "Storms cause invisible damage", d: "Hail and wind compromise your roof without obvious signs. Only a pro can spot the real damage." },
+    { t: "Insurance claims are confusing", d: "We document damage thoroughly and guide you through the process — no hype, just support." },
+  ];
+  return (
+    <section className="relative bg-ink-950 py-24 md:py-32 border-y border-neutral-900">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="max-w-3xl mb-20">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+            The Reality
+          </p>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter">
+            What most people <span className="text-gold-500 italic">don&apos;t see</span> until it&apos;s too late.
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-px bg-neutral-900">
+          {problems.map((p, i) => (
+            <div key={i} className="bg-black p-10 md:p-12">
+              <div className="flex gap-6">
+                <div className="font-display text-3xl font-black text-gold-500 leading-none shrink-0 w-10">
+                  0{i + 1}
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Call Us</p>
-                  <p className="text-lg font-bold text-slate-900">(210) 551-0119</p>
-                </div>
-              </a>
-              <a
-                href="mailto:jvcontracting210@gmail.com"
-                className="flex items-center gap-4 rounded-xl bg-slate-50 p-4 transition-colors hover:bg-amber-500/5"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-500 text-white">
-                  <EmailIcon />
-                </div>
-                <div>
-                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Email</p>
-                  <p className="text-lg font-bold text-slate-900">jvcontracting210@gmail.com</p>
-                </div>
-              </a>
-              <div className="flex items-center gap-4 rounded-xl bg-slate-50 p-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-500 text-white">
-                  <LocationIcon />
-                </div>
-                <div>
-                  <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">Location</p>
-                  <p className="text-lg font-bold text-slate-900">San Antonio, TX 78213</p>
-                  <p className="text-sm text-slate-500">Serving San Antonio & surrounding areas</p>
+                  <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight tracking-tight">
+                    {p.t}
+                  </h3>
+                  <p className="mt-4 text-neutral-400 leading-relaxed">
+                    {p.d}
+                  </p>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* CONTACT BLOCK                                                */
+/* ════════════════════════════════════════════════════════════ */
+function ContactBlock() {
+  return (
+    <section className="relative bg-black py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-5">
+              Get In Touch
+            </p>
+            <h2 className="font-display text-5xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter">
+              Tell us what&apos;s <span className="text-gold-500 italic">happening.</span>
+            </h2>
+            <p className="mt-8 text-lg text-neutral-400 leading-relaxed max-w-lg">
+              Whether you need an inspection, a repair, or a full replacement — reach out. We respond within 24 hours.
+            </p>
+
+            <div className="mt-12 space-y-8">
+              <a href="tel:+12105510119" className="group block">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-2">Phone</p>
+                <p className="font-display text-3xl md:text-4xl font-black text-white group-hover:text-gold-500 transition-colors tracking-tight">
+                  (210) 551-0119
+                </p>
+              </a>
+              <a href="mailto:jvcontracting210@gmail.com" className="group block">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-2">Email</p>
+                <p className="font-display text-xl md:text-2xl font-bold text-white group-hover:text-gold-500 transition-colors break-all">
+                  jvcontracting210@gmail.com
+                </p>
+              </a>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-500 mb-2">Service Area</p>
+                <p className="font-display text-xl font-bold text-white">
+                  San Antonio, TX 78213
+                </p>
+                <p className="text-sm text-neutral-400 mt-1">
+                  & surrounding areas
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-2xl bg-slate-50 p-6 sm:p-8 border border-slate-100">
-            <h3 className="text-xl font-bold text-slate-900 mb-6">
-              Request a Free Estimate
+          <div className="border border-neutral-900 bg-neutral-950 p-8 md:p-10">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-3">
+              Quick Form
+            </p>
+            <h3 className="font-display text-3xl font-black text-white leading-none tracking-tight mb-8">
+              Request an estimate.
             </h3>
             <ContactForm />
           </div>
@@ -447,101 +528,33 @@ function ContactBlock() {
   );
 }
 
-/* ──────────── PAGE ────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════ */
+/* PAGE                                                         */
+/* ════════════════════════════════════════════════════════════ */
 export default function Home() {
   return (
     <>
       <Hero />
-      <TrustStrip />
-      <ServicesPreview />
-      <ProofSection />
-      <ProblemSection />
-      <ProcessSection />
+      <Marquee />
+      <Services />
+      <Proof />
+      <Problem />
+      <Process />
       <GalleryPreview />
-      <CTASection />
+      <Reviews />
+      <CTASection
+        headline="Your roof is one storm away."
+        description="Don't wait. Get a free inspection today — we'll tell you exactly where you stand."
+      />
       <ContactBlock />
     </>
   );
 }
 
-/* ──────────── ICONS ───────────────────────────────────── */
 function PhoneIcon() {
   return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-    </svg>
-  );
-}
-
-function EmailIcon() {
-  return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-    </svg>
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-    </svg>
-  );
-}
-
-function InspectionIcon() {
-  return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.745 3.745 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-    </svg>
-  );
-}
-
-function CheckCircle() {
-  return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  );
-}
-
-function WrenchIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.49 5.49a2.121 2.121 0 01-3-3l5.49-5.49m2.02 2.02c.603-.603.871-1.44.743-2.26a4.5 4.5 0 016.205-4.66l-2.83 2.83a1.5 1.5 0 002.122 2.122l2.828-2.829a4.5 4.5 0 01-4.66 6.206c-.82-.128-1.657.14-2.26.743L7.57 20.32" />
-    </svg>
-  );
-}
-
-function HomeIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-    </svg>
-  );
-}
-
-function StormIcon() {
-  return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3" />
-    </svg>
-  );
-}
-
-function AlertIcon() {
-  return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
     </svg>
   );
 }

@@ -1,7 +1,32 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest:*)"
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm run:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:www.facebook.com)",
+      "WebSearch",
+      "WebFetch(domain:www.jvsolutionstx.com)",
+      "WebFetch(domain:api.pexels.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:pixabay.com)",
+      "Bash(curl -s \"https://pixabay.com/api/?key=46498122-aba026f2b3e79cd7430fedf82&q=roofing+shingles+house&image_type=photo&orientation=horizontal&per_page=10&min_width=1280\")",
+      "Bash(python3 -c \" import json,sys data=json.load\\(sys.stdin\\) for h in data.get\\('hits',[]\\): print\\(f\\\\\"{h['id']}|{h['largeImageURL']}|{h['tags']}\\\\\"\\) \")",
+      "Bash(python -c \" import json,sys data=json.load\\(sys.stdin\\) for h in data.get\\('hits',[]\\): print\\(h['id'],h['largeImageURL'],h['tags'],sep='|'\\) \")",
+      "Bash(curl -s \"https://pixabay.com/api/?key=46498122-aba026f2b3e79cd7430fedf82&q=roofing+shingles+house&image_type=photo&orientation=horizontal&per_page=5\")",
+      "Bash(curl -sL -o /c/jv-restoration-and-building-sols/public/images/licensed-support/test.jpg -H 'User-Agent: Mozilla/5.0' 'https://images.pexels.com/photos/7788264/pexels-photo-7788264.jpeg?auto=compress&cs=tinysrgb&w=1280')",
+      "Bash(ls /c/jv-restoration-and-building-sols/*.pdf)",
+      "Bash(python -c \"import fitz; print\\('pymupdf available'\\)\")",
+      "Bash(python -c \"from pdf2image import convert_from_path; print\\('pdf2image available'\\)\")",
+      "Bash(python -c \"from pypdfium2 import PdfDocument; print\\('pypdfium2 available'\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(wait)"
     ]
   }
 }

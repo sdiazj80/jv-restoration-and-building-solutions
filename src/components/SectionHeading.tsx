@@ -2,25 +2,39 @@ export function SectionHeading({
   label,
   title,
   description,
-  centered = true,
+  centered = false,
+  invert = false,
 }: {
   label?: string;
   title: string;
   description?: string;
   centered?: boolean;
+  invert?: boolean;
 }) {
   return (
-    <div className={centered ? "text-center" : ""}>
+    <div className={centered ? "text-center max-w-3xl mx-auto" : "max-w-3xl"}>
       {label && (
-        <p className="text-sm font-semibold uppercase tracking-widest text-amber-500 mb-2">
+        <p
+          className={`text-xs font-bold uppercase tracking-[0.3em] mb-5 ${
+            invert ? "text-gold-600" : "text-gold-500"
+          }`}
+        >
           {label}
         </p>
       )}
-      <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl text-balance">
+      <h2
+        className={`font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tighter text-balance ${
+          invert ? "text-black" : "text-white"
+        }`}
+      >
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto">
+        <p
+          className={`mt-6 text-lg leading-relaxed ${
+            invert ? "text-neutral-700" : "text-neutral-400"
+          }`}
+        >
           {description}
         </p>
       )}
