@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -6,21 +7,30 @@ import { ContactForm } from "@/components/ContactForm";
 /* ───────────────────────── HERO ───────────────────────── */
 function Hero() {
   return (
-    <section className="relative bg-slate-900 overflow-hidden">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
+    <section className="relative min-h-[600px] lg:min-h-[700px] overflow-hidden">
+      {/* Background Image */}
+      <Image
+        src="/images/licensed-support/craftsman-home-01.jpg"
+        alt="Beautiful residential home with professionally installed roof in San Antonio"
+        fill
+        className="object-cover"
+        priority
+        sizes="100vw"
+      />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/50" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-slate-900/30" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
         <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 border border-amber-500/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-400 mb-6">
+          <p className="inline-flex items-center gap-2 rounded-full bg-amber-500/20 border border-amber-500/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-400 mb-6 backdrop-blur-sm">
             San Antonio&apos;s Trusted Roofers
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
             Protect Your Home With a Roof{" "}
             <span className="text-amber-400">Built to Last</span>
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-slate-300 max-w-2xl">
+          <p className="mt-6 text-lg leading-relaxed text-slate-200 max-w-2xl">
             From storm damage repairs to complete roof replacements, JV
             Restoration delivers honest assessments, quality craftsmanship, and
             results you can see. Serving San Antonio homeowners and businesses
@@ -29,14 +39,14 @@ function Hero() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-8 py-4 text-sm font-bold text-slate-900 transition-colors hover:bg-amber-400"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-8 py-4 text-sm font-bold text-slate-900 transition-colors hover:bg-amber-400 shadow-lg shadow-amber-500/25"
             >
               <InspectionIcon />
               Get Free Roof Inspection
             </Link>
             <a
               href="tel:+12105510119"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-600 px-8 py-4 text-sm font-bold text-white transition-colors hover:border-white"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/20 hover:border-white/50"
             >
               <PhoneIcon />
               Call Now — (210) 551-0119
@@ -83,24 +93,28 @@ const services = [
     description:
       "Leaks, missing shingles, and weather damage fixed fast. We stop small problems before they become expensive emergencies.",
     icon: <WrenchIcon />,
+    image: "/images/licensed-support/roof-shingles-detail-01.jpg",
   },
   {
     title: "Roof Replacement",
     description:
       "When repairs aren't enough, we deliver full roof replacements with premium materials and clean, professional installation.",
     icon: <HomeIcon />,
+    image: "/images/licensed-support/house-roof-angle-01.jpg",
   },
   {
     title: "Roof Inspections",
     description:
       "Free, thorough inspections that catch issues early. Know exactly what's going on with your roof — no surprises.",
     icon: <SearchIcon />,
+    image: "/images/licensed-support/roof-inspection-01.jpg",
   },
   {
     title: "Storm Damage Roofing",
     description:
       "Hail, wind, and storm damage restored quickly. We help you navigate the process and get your roof back to full protection.",
     icon: <StormIcon />,
+    image: "/images/licensed-support/storm-clouds-01.jpg",
   },
 ];
 
@@ -117,26 +131,92 @@ function ServicesPreview() {
           {services.map((s) => (
             <div
               key={s.title}
-              className="group rounded-xl border border-slate-200 p-6 transition-all hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/5"
+              className="group rounded-xl border border-slate-200 overflow-hidden transition-all hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/5"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-500/10 text-amber-600 transition-colors group-hover:bg-amber-500 group-hover:text-white">
-                {s.icon}
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <Image
+                  src={s.image}
+                  alt={s.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {s.description}
-              </p>
-              <Link
-                href="/services"
-                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-amber-600 transition-colors hover:text-amber-500"
-              >
-                Learn More
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </Link>
+              <div className="p-6">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10 text-amber-600 transition-colors group-hover:bg-amber-500 group-hover:text-white">
+                  {s.icon}
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {s.description}
+                </p>
+                <Link
+                  href="/services"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-amber-600 transition-colors hover:text-amber-500"
+                >
+                  Learn More
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────── PROOF / CREDIBILITY ──────────────────── */
+function ProofSection() {
+  return (
+    <section className="relative bg-slate-900 py-16 md:py-24 overflow-hidden">
+      <Image
+        src="/images/licensed-support/aerial-neighborhood-01.jpg"
+        alt="Aerial view of residential neighborhood"
+        fill
+        className="object-cover opacity-20"
+        sizes="100vw"
+      />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400 mb-2">
+              Why San Antonio Trusts Us
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
+              Roofing Done Right, Every Time
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-slate-300">
+              We&apos;re not a fly-by-night operation. JV Restoration is a local
+              San Antonio team that stands behind every job. Our work speaks for
+              itself — and so do the homeowners we&apos;ve helped protect.
+            </p>
+            <div className="mt-8 grid grid-cols-2 gap-6">
+              {[
+                { value: "Free", label: "Inspections & Estimates" },
+                { value: "100%", label: "Satisfaction Focus" },
+                { value: "Local", label: "San Antonio Based" },
+                { value: "Fast", label: "Response Times" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-3xl font-bold text-amber-400">{stat.value}</p>
+                  <p className="mt-1 text-sm text-slate-400">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src="/images/licensed-support/roofing-worker-01.jpg"
+              alt="Professional roofer working on a roof"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -253,12 +333,12 @@ function ProcessSection() {
 /* ─────────── GALLERY PREVIEW ──────────────────────────── */
 function GalleryPreview() {
   const images = [
-    { src: "/images/roof-1.jpg", alt: "Roof Replacement – San Antonio" },
-    { src: "/images/roof-2.jpg", alt: "Storm Damage Repair" },
-    { src: "/images/roof-3.jpg", alt: "Residential Roofing Project" },
-    { src: "/images/roof-4.jpg", alt: "Completed Roof Installation" },
-    { src: "/images/roof-5.jpg", alt: "Roof Inspection in Progress" },
-    { src: "/images/roof-6.jpg", alt: "Before & After Roof Repair" },
+    { src: "/images/licensed-support/house-exterior-08.jpg", alt: "Completed Residential Roof – San Antonio" },
+    { src: "/images/licensed-support/house-exterior-01.jpg", alt: "New Roof Installation" },
+    { src: "/images/licensed-support/suburban-home-01.jpg", alt: "Suburban Home Roofing Project" },
+    { src: "/images/licensed-support/house-roof-angle-01.jpg", alt: "Residential Roof Replacement" },
+    { src: "/images/licensed-support/house-exterior-04.jpg", alt: "Roof Repair – San Antonio" },
+    { src: "/images/licensed-support/house-exterior-07.jpg", alt: "Residential Roofing" },
   ];
 
   return (
@@ -267,7 +347,7 @@ function GalleryPreview() {
         <SectionHeading
           label="Our Work"
           title="Real Projects, Real Results"
-          description="Browse our recent roofing projects across San Antonio. Every photo is from a real job — no stock images."
+          description="Browse our recent roofing projects across San Antonio."
         />
         <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((img, i) => (
@@ -275,11 +355,16 @@ function GalleryPreview() {
               key={i}
               className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200"
             >
-              {/* Placeholder until real images are added */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-800/90 text-slate-400 p-4 text-center">
-                <CameraIcon />
-                <p className="mt-2 text-xs font-medium">{img.alt}</p>
-                <p className="mt-1 text-[10px] text-slate-500">Add image: public{img.src}</p>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform">
+                <p className="text-sm font-medium text-white">{img.alt}</p>
               </div>
             </div>
           ))}
@@ -369,6 +454,7 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <ServicesPreview />
+      <ProofSection />
       <ProblemSection />
       <ProcessSection />
       <GalleryPreview />
@@ -456,15 +542,6 @@ function AlertIcon() {
   return (
     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-    </svg>
-  );
-}
-
-function CameraIcon() {
-  return (
-    <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
     </svg>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 
@@ -13,6 +14,7 @@ const services = [
     id: "roof-repair",
     title: "Roof Repair",
     tagline: "Fix Problems Before They Get Worse",
+    image: "/images/licensed-support/roof-shingles-detail-01.jpg",
     description:
       "Not every roof issue requires a full replacement. From leaks and missing shingles to flashing damage and wear from age, our repair services address problems fast — before they turn into expensive emergencies.",
     points: [
@@ -29,6 +31,7 @@ const services = [
     id: "roof-replacement",
     title: "Roof Replacement",
     tagline: "When It's Time for a New Roof, We Do It Right",
+    image: "/images/licensed-support/house-roof-angle-01.jpg",
     description:
       "When repairs are no longer enough, a full roof replacement protects your home for decades. We handle complete tear-offs and installations using quality materials, proper ventilation, and clean workmanship.",
     points: [
@@ -45,6 +48,7 @@ const services = [
     id: "roof-inspections",
     title: "Roof Inspections",
     tagline: "Know Exactly What's Going On Up There",
+    image: "/images/licensed-support/roof-inspection-01.jpg",
     description:
       "Our free, thorough roof inspections give you a clear picture of your roof's condition. We document everything and provide honest recommendations — whether your roof needs attention now or can wait.",
     points: [
@@ -61,6 +65,7 @@ const services = [
     id: "storm-damage",
     title: "Storm Damage Roofing",
     tagline: "Hail, Wind, and Storm Damage — Restored Fast",
+    image: "/images/licensed-support/storm-clouds-01.jpg",
     description:
       "San Antonio weather can be severe. Hailstorms, high winds, and heavy rain can damage your roof in ways that aren't always visible from the ground. We specialize in identifying and restoring storm damage quickly and completely.",
     points: [
@@ -77,6 +82,7 @@ const services = [
     id: "insurance-assistance",
     title: "Insurance Claim Assistance",
     tagline: "Guidance Through the Claims Process",
+    image: "/images/licensed-support/house-exterior-01.jpg",
     description:
       "Filing an insurance claim for roof damage can be confusing and overwhelming. While we're not a public adjuster, we provide thorough documentation and guidance to support your claim and help the process go smoothly.",
     points: [
@@ -96,8 +102,15 @@ export default function ServicesPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-slate-900 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-slate-900 py-16 md:py-20 overflow-hidden">
+        <Image
+          src="/images/licensed-support/aerial-residential-02.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+        />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-semibold uppercase tracking-widest text-amber-400 mb-3">
             Our Services
           </p>
@@ -121,6 +134,17 @@ export default function ServicesPage() {
             className={idx % 2 === 1 ? "bg-slate-50" : "bg-white"}
           >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+              {/* Service Image */}
+              <div className="relative aspect-[21/9] rounded-2xl overflow-hidden mb-12">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-widest text-amber-500 mb-2">

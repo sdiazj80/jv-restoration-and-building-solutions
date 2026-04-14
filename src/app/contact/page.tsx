@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
@@ -11,8 +12,15 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-slate-900 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-slate-900 py-16 md:py-20 overflow-hidden">
+        <Image
+          src="/images/licensed-support/house-exterior-08.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+        />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-semibold uppercase tracking-widest text-amber-400 mb-3">
             Contact Us
           </p>
