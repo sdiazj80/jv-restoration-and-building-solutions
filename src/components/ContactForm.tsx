@@ -27,7 +27,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full bg-transparent border-0 border-b border-neutral-700 px-0 py-4 text-base text-white placeholder-neutral-600 transition-colors focus:border-gold-500 focus:outline-none";
+    "w-full bg-transparent border-0 border-b border-neutral-700 px-0 py-4 text-base text-white placeholder-neutral-500 transition-colors focus:border-gold-500 focus:outline-none";
 
   return (
     <form

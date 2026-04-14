@@ -168,7 +168,7 @@ export default function ServicesPage() {
 
               {/* Content */}
               <div className="lg:col-span-6">
-                <p className="font-display text-7xl md:text-8xl font-black text-neutral-900 tracking-tighter leading-none mb-8">
+                <p aria-hidden="true" className="font-display text-7xl md:text-8xl font-black text-neutral-500 tracking-tighter leading-none mb-8">
                   {s.no}
                 </p>
                 <h2 className="font-display text-5xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter">
@@ -200,7 +200,7 @@ export default function ServicesPage() {
                 </div>
 
                 {s.note && (
-                  <p className="mt-6 text-sm text-neutral-500 italic">
+                  <p className="mt-6 text-sm text-neutral-400 italic">
                     {s.note}
                   </p>
                 )}

@@ -71,7 +71,7 @@ export default function GalleryPage() {
                 Highlighted work
               </h2>
             </div>
-            <p className="hidden md:block text-sm text-neutral-500 uppercase tracking-widest">
+            <p className="hidden md:block text-sm text-neutral-400 uppercase tracking-widest">
               {featuredImages.length} projects
             </p>
           </div>

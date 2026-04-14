@@ -82,7 +82,7 @@ function Hero() {
                   <p className="font-display text-3xl md:text-4xl font-black text-white leading-none">
                     {s.v}
                   </p>
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mt-2">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-400 mt-2">
                     {s.l}
                   </p>
                 </div>
@@ -115,7 +115,7 @@ function Marquee() {
       <div className="flex animate-marquee whitespace-nowrap">
         {doubled.map((item, i) => (
           <div key={i} className="flex items-center mx-8 shrink-0">
-            <span className="font-display text-2xl md:text-4xl font-black text-neutral-900 tracking-tight uppercase [-webkit-text-stroke:1px_theme(colors.gold-500)]">
+            <span aria-hidden="true" className="font-display text-2xl md:text-4xl font-black text-transparent tracking-tight uppercase [-webkit-text-stroke:1px_theme(colors.gold-500)]">
               {item}
             </span>
             <span className="mx-8 text-gold-500 text-2xl">◆</span>
@@ -195,7 +195,7 @@ function Services() {
             >
               {/* Number */}
               <div className="md:col-span-2">
-                <p className="font-display text-5xl md:text-6xl font-black text-neutral-800 transition-colors group-hover:text-gold-500">
+                <p aria-hidden="true" className="font-display text-5xl md:text-6xl font-black text-neutral-500 transition-colors group-hover:text-gold-500">
                   {s.no}
                 </p>
               </div>
@@ -324,14 +324,14 @@ function Process() {
             The Process
           </p>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter max-w-4xl mx-auto text-balance">
-            Four steps. <span className="text-gold-500 italic">Zero BS.</span>
+            Four steps. <span className="text-gold-500 italic">No runaround.</span>
           </h2>
         </div>
 
         <div className="grid md:grid-cols-4 gap-px bg-neutral-900 border border-neutral-900">
           {steps.map((s, i) => (
             <div key={s.n} className="group relative bg-black p-8 md:p-10 transition-colors hover:bg-neutral-950">
-              <p className="font-display text-6xl md:text-7xl font-black text-neutral-900 leading-none tracking-tighter transition-colors group-hover:text-gold-500">
+              <p aria-hidden="true" className="font-display text-6xl md:text-7xl font-black text-neutral-500 leading-none tracking-tighter transition-colors group-hover:text-gold-500">
                 {s.n}
               </p>
               <h3 className="font-display text-xl md:text-2xl font-black text-white mt-6 leading-tight">

@@ -29,7 +29,8 @@ const REVIEW_URL = "https://g.page/r/jv-restoration-building-solutions/review";
 function Star({ filled = true }: { filled?: boolean }) {
   return (
     <svg
-      className={`h-5 w-5 ${filled ? "text-gold-500" : "text-neutral-800"}`}
+      aria-hidden="true"
+      className={`h-5 w-5 ${filled ? "text-gold-500" : "text-neutral-600"}`}
       viewBox="0 0 24 24"
       fill="currentColor"
     >
@@ -57,7 +58,7 @@ export function Reviews() {
                 <Star key={i} />
               ))}
               <span className="ml-3 font-display text-2xl font-black text-white">5.0</span>
-              <span className="text-sm text-neutral-500 uppercase tracking-widest ml-2">
+              <span className="text-sm text-neutral-400 uppercase tracking-widest ml-2">
                 Google Rating
               </span>
             </div>

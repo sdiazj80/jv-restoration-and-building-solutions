@@ -58,7 +58,7 @@ export default function ContactPage() {
                   <p className="font-display text-3xl md:text-4xl font-black text-white group-hover:text-gold-500 transition-colors tracking-tight leading-none">
                     (210) 551-0119
                   </p>
-                  <p className="text-sm text-neutral-500 mt-2">Available during business hours</p>
+                  <p className="text-sm text-neutral-400 mt-2">Available during business hours</p>
                 </a>
 
                 <a href="mailto:jvcontracting210@gmail.com" className="group block border-l-2 border-neutral-800 pl-6 py-2 hover:border-gold-500 transition-colors">
@@ -68,7 +68,7 @@ export default function ContactPage() {
                   <p className="font-display text-xl md:text-2xl font-bold text-white group-hover:text-gold-500 transition-colors break-all leading-tight">
                     jvcontracting210@gmail.com
                   </p>
-                  <p className="text-sm text-neutral-500 mt-2">Response within 24 hours</p>
+                  <p className="text-sm text-neutral-400 mt-2">Response within 24 hours</p>
                 </a>
 
                 <div className="border-l-2 border-neutral-800 pl-6 py-2">
@@ -78,7 +78,7 @@ export default function ContactPage() {
                   <p className="font-display text-xl md:text-2xl font-bold text-white leading-tight">
                     San Antonio, TX 78213
                   </p>
-                  <p className="text-sm text-neutral-500 mt-2">
+                  <p className="text-sm text-neutral-400 mt-2">
                     Serving San Antonio & surrounding areas
                   </p>
                 </div>

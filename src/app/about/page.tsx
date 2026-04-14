@@ -42,7 +42,7 @@ export default function AboutPage() {
                 Our Story
               </p>
               <h2 className="font-display text-5xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter">
-                A San Antonio roofer that gives a <span className="text-gold-500 italic">damn.</span>
+                A San Antonio roofer who actually <span className="text-gold-500 italic">shows up.</span>
               </h2>
             </div>
             <div className="lg:col-span-7 space-y-8 text-lg text-neutral-300 leading-relaxed">
@@ -90,7 +90,7 @@ export default function AboutPage() {
               { n: "06", t: "Storm Damage Experts", d: "Texas weather is unpredictable. We specialize in identifying and repairing hail, wind, and storm damage — and guiding you through insurance." },
             ].map((v) => (
               <div key={v.n} className="group grid md:grid-cols-12 gap-6 py-10 md:py-12 items-baseline">
-                <p className="md:col-span-2 font-display text-5xl md:text-6xl font-black text-neutral-900 tracking-tighter group-hover:text-gold-500 transition-colors">
+                <p aria-hidden="true" className="md:col-span-2 font-display text-5xl md:text-6xl font-black text-neutral-500 tracking-tighter group-hover:text-gold-500 transition-colors">
                   {v.n}
                 </p>
                 <h3 className="md:col-span-4 font-display text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">

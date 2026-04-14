@@ -61,7 +61,7 @@ export function Footer() {
             </div>
             <p className="text-sm leading-relaxed text-neutral-400 max-w-xs">
               San Antonio&apos;s modern roofing brand. Built on quality work,
-              real materials, and zero bullshit.
+              real materials, and no shortcuts.
             </p>
           </div>
 
@@ -126,7 +126,7 @@ export function Footer() {
                   href="tel:+12105510119"
                   className="block text-sm text-neutral-400 transition-colors hover:text-white"
                 >
-                  <span className="block text-[10px] uppercase tracking-widest text-neutral-600 mb-0.5">Phone</span>
+                  <span className="block text-[10px] uppercase tracking-widest text-neutral-400 mb-0.5">Phone</span>
                   (210) 551-0119
                 </a>
               </li>
@@ -135,13 +135,13 @@ export function Footer() {
                   href="mailto:jvcontracting210@gmail.com"
                   className="block text-sm text-neutral-400 transition-colors hover:text-white break-all"
                 >
-                  <span className="block text-[10px] uppercase tracking-widest text-neutral-600 mb-0.5">Email</span>
+                  <span className="block text-[10px] uppercase tracking-widest text-neutral-400 mb-0.5">Email</span>
                   jvcontracting210@gmail.com
                 </a>
               </li>
               <li>
                 <div className="block text-sm text-neutral-400">
-                  <span className="block text-[10px] uppercase tracking-widest text-neutral-600 mb-0.5">Location</span>
+                  <span className="block text-[10px] uppercase tracking-widest text-neutral-400 mb-0.5">Location</span>
                   San Antonio, TX 78213
                 </div>
               </li>
@@ -151,10 +151,10 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <p className="text-xs text-neutral-600">
+          <p className="text-xs text-neutral-400">
             © {new Date().getFullYear()} JV Restoration & Building Solutions LLC. All rights reserved.
           </p>
-          <p className="text-xs text-neutral-600 uppercase tracking-widest">
+          <p className="text-xs text-neutral-400 uppercase tracking-widest">
             San Antonio · Texas
           </p>
         </div>
